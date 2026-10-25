@@ -6,15 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Arcade Vault: a retro arcade portal where users play games online and compete for points (README is in Spanish; UI copy is Spanish). The README says the project follows Spec Driven Design (`/spec` and `/spec-impl` skills, from `Klerith/fernando-skills`).
 
-## Commands
-
-```bash
-npm run dev      # next dev
-npm run build    # next build
-npm run start    # next start
-npm run lint     # eslint (flat config, next core-web-vitals + typescript)
-npx tsc --noEmit # type check
-```
 
 There is no test runner configured.
 
@@ -35,3 +26,7 @@ The real design source is `resources/templates/`, a standalone prototype to port
 - Screens: `biblioteca.jsx` (Library), `detalle.jsx` (GameDetail), `reproductor.jsx` (GamePlayer), `auth.jsx` (Auth), `salon.jsx` (HallOfFame), plus `nav.jsx`.
 - `app.jsx` is a hash router. The route is a JSON object (`{name: "biblioteca" | "detalle" | "player" | "auth" | "salon", id?}`) kept in `location.hash`. The prototype's state lives in `localStorage`: `av_user` for the session and `av_scores` for the score list. In Next this should become real routes, and persistence is not yet decided.
 - `styles.css` (~950 lines) is the whole visual system (neon/retro theme, CSS variables like `--line`, `--ink-faint`, `--mono`; fonts Press Start 2P, Courier Prime, JetBrains Mono).
+
+
+## Skills
+Always use /frontend-design to work on frontend UI
