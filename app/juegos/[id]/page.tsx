@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GAMES, getGame } from "@/lib/games";
@@ -7,8 +8,16 @@ export function generateStaticParams() {
   return GAMES.map((g) => ({ id: g.id }));
 }
 
-export default async function GameDetailPage(props: PageProps<"/juegos/[id]">) {
-  const { id } = await props.params;
+export default function GameDetailPage(props: PageProps<"/juegos/[id]">) {
+  return (
+    <Suspense fallback={null}>
+      <GameDetail params={props.params} />
+    </Suspense>
+  );
+}
+
+async function GameDetail({ params }: Pick<PageProps<"/juegos/[id]">, "params">) {
+  const { id } = await params;
   const game = getGame(id);
   if (!game) notFound();
 
