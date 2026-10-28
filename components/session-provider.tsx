@@ -8,16 +8,14 @@ import {
   useSyncExternalStore,
   type ReactNode,
 } from "react";
-import type { SavedScore, SessionUser } from "@/lib/types";
+import type { SessionUser } from "@/lib/types";
 
 const USER_KEY = "av_user";
-const SCORES_KEY = "av_scores";
 
 type SessionContextValue = {
   user: SessionUser | null;
   login: (user: SessionUser | null) => void;
   logout: () => void;
-  saveScore: (entry: Omit<SavedScore, "at">) => void;
 };
 
 const SessionContext = createContext<SessionContextValue | null>(null);
@@ -76,19 +74,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(() => writeUser(null), []);
 
-  const saveScore = useCallback((entry: Omit<SavedScore, "at">) => {
-    try {
-      const all: SavedScore[] = JSON.parse(
-        localStorage.getItem(SCORES_KEY) || "[]",
-      );
-      all.push({ ...entry, at: Date.now() });
-      localStorage.setItem(SCORES_KEY, JSON.stringify(all));
-    } catch {}
-  }, []);
-
   const value = useMemo(
-    () => ({ user, login, logout, saveScore }),
-    [user, login, logout, saveScore],
+    () => ({ user, login, logout }),
+    [user, login, logout],
   );
 
   return (

@@ -9,22 +9,15 @@ export type Game = {
   cat: Category;
   cover: string;
   color: GameColor;
-  best: number;
-  plays: string;
+  best: number | null; // null si aún no hay puntajes
+  plays: number; // puntajes guardados
 };
 
 export type ScoreRow = {
   rank: number;
   name: string;
   score: number;
-  date: string;
+  date: string; // dd/mm/aaaa, formateado en el servidor en UTC
 };
 
 export type SessionUser = { name: string };
-
-export type SavedScore = {
-  game: string;
-  score: number;
-  name: string;
-  at: number;
-};
