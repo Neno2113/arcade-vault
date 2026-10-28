@@ -1,11 +1,12 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GAMES, getGame } from "@/lib/games";
-import { seededScores } from "@/lib/scores";
+import { formatPlays } from "@/lib/catalog";
+import { getGame, getGames } from "@/lib/games";
+import { getTopScores } from "@/lib/scores";
 
-export function generateStaticParams() {
-  return GAMES.map((g) => ({ id: g.id }));
+export async function generateStaticParams() {
+  return (await getGames()).map((g) => ({ id: g.id }));
 }
 
 export default function GameDetailPage(props: PageProps<"/juegos/[id]">) {
@@ -18,10 +19,10 @@ export default function GameDetailPage(props: PageProps<"/juegos/[id]">) {
 
 async function GameDetail({ params }: Pick<PageProps<"/juegos/[id]">, "params">) {
   const { id } = await params;
-  const game = getGame(id);
+  const game = await getGame(id);
   if (!game) notFound();
 
-  const scores = seededScores(id.length * 17 + 3, 10);
+  const scores = await getTopScores(game.id, 10);
 
   return (
     <div className="av-detail fade-in">
@@ -40,8 +41,8 @@ async function GameDetail({ params }: Pick<PageProps<"/juegos/[id]">, "params">)
           <p>{game.long}</p>
           <div className="stat-strip">
             <div>
-              <div className="l">Partidas</div>
-              <div className="v">{game.plays}</div>
+              <div className="l">Puntuaciones</div>
+              <div className="v">{formatPlays(game.plays)}</div>
             </div>
             <div>
               <div className="l">Mejor global</div>
@@ -49,7 +50,7 @@ async function GameDetail({ params }: Pick<PageProps<"/juegos/[id]">, "params">)
                 className="v"
                 style={{ color: "var(--magenta)", textShadow: "0 0 6px rgba(255,0,110,0.5)" }}
               >
-                {game.best.toLocaleString("es-ES")}
+                {game.best === null ? "—" : game.best.toLocaleString("es-ES")}
               </div>
             </div>
             <div>
@@ -76,9 +77,23 @@ async function GameDetail({ params }: Pick<PageProps<"/juegos/[id]">, "params">)
       <aside>
         <div className="leaderboard">
           <h3>MEJORES PUNTUACIONES</h3>
+          {scores.length === 0 && (
+            <div
+              className="pixel"
+              style={{
+                padding: "40px 12px",
+                textAlign: "center",
+                fontSize: 11,
+                color: "var(--ink-faint)",
+                letterSpacing: "0.1em",
+              }}
+            >
+              AÚN NO HAY PUNTUACIONES
+            </div>
+          )}
           {scores.map((r, i) => (
             <div
-              key={r.name}
+              key={r.rank}
               className={
                 "lb-row" + (i === 0 ? " top1" : i === 1 ? " top2" : i === 2 ? " top3" : "")
               }

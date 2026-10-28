@@ -2,6 +2,7 @@
 
 import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
+import { formatPlays } from "@/lib/catalog";
 import type { Game } from "@/lib/types";
 
 export function GameCard({ game }: { game: Game }) {
@@ -43,7 +44,8 @@ export function GameCard({ game }: { game: Game }) {
         <div className="row">
           <div className="score-badge">
             <span>MEJOR PUNTUACIÓN</span>
-            <b>{game.best.toLocaleString("es-ES")}</b>
+            <b>{game.best === null ? "—" : game.best.toLocaleString("es-ES")}</b>
+            <span>{formatPlays(game.plays)} PUNTUACIONES</span>
           </div>
           <span className={("btn " + btnColor).trim()}>JUGAR</span>
         </div>

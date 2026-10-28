@@ -1,20 +1,23 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import Link from 'next/link';
 import type { Game } from '@/lib/types';
 import { GAME_REGISTRY } from './games/registry';
 import type { GameStats } from './games/types';
+import { saveScore } from '@/app/juegos/[id]/jugar/actions';
 import { useSession } from './session-provider';
 const LEVEL_STEP = 2500;
 const LIVES = 3;
 export function GamePlayer({ game }: { game: Game }) {
-  const { user, saveScore } = useSession();
+  const { user } = useSession();
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(1);
   const [paused, setPaused] = useState(false);
   const [over, setOver] = useState(false);
   const [typedName, setTypedName] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saving, startSaving] = useTransition();
   const [lives, setLives] = useState(LIVES);
   const [tripleLeft, setTripleLeft] = useState(0);
   const [runId, setRunId] = useState(0);
@@ -44,6 +47,7 @@ export function GamePlayer({ game }: { game: Game }) {
     setPaused(false);
     setOver(false);
     setSaved(false);
+    setSaveError(null);
   };
   const handleStats = (stats: GameStats) => {
     setScore(stats.score);
@@ -56,8 +60,16 @@ export function GamePlayer({ game }: { game: Game }) {
     setOver(true);
   };
   const save = () => {
-    saveScore({ game: game.id, score, name });
-    setSaved(true);
+    setSaveError(null);
+    startSaving(async () => {
+      try {
+        const res = await saveScore(game.id, name, score);
+        if (res.status === 'success') setSaved(true);
+        else if (res.status === 'error') setSaveError(res.message);
+      } catch {
+        setSaveError('No pudimos guardar tu puntuación. Inténtalo de nuevo.');
+      }
+    });
   };
   return (
     <div className="av-player fade-in">
@@ -164,12 +176,30 @@ export function GamePlayer({ game }: { game: Game }) {
                   placeholder="TUS INICIALES"
                   aria-label="Tus iniciales"
                 />
-                <button className="btn yellow" onClick={save}>
-                  GUARDAR PUNTUACIÓN
+                <button
+                  className="btn yellow"
+                  onClick={save}
+                  disabled={saving}
+                >
+                  {saving ? 'GUARDANDO…' : 'GUARDAR PUNTUACIÓN'}
                 </button>
               </div>
             ) : (
               <div className="toast-saved">▸ PUNTUACIÓN GUARDADA_</div>
+            )}
+            {saveError && (
+              <div
+                role="alert"
+                className="mono"
+                style={{
+                  color: 'var(--magenta)',
+                  fontSize: 12,
+                  letterSpacing: '0.1em',
+                  marginTop: 10,
+                }}
+              >
+                ▸ {saveError}
+              </div>
             )}
             <div className="actions">
               <button className="btn" onClick={restart}>

@@ -1,6 +1,6 @@
 # SPEC 05 — Primer juego real: Asteroids portado a Next.js
 
-> **Status:** aprobado
+> **Status:** Implementado
 > **Depends on:** SPEC 01
 > **Date:** 2026-10-27
 > **Objective:** Portar el juego Asteroids de `../02-asteroids` (canvas + JS puro) a un componente de Next.js que `GamePlayer` carga mediante un registro de juegos para la entrada `rocas`, reportando puntaje, vidas, nivel y fin de partida al HUD y al modal de la plataforma.
@@ -121,21 +121,21 @@ Antes de escribir código de Next, leer la guía relevante en `node_modules/next
 
 ## Criterios de aceptación
 
-- [ ] `npm run build`, `npm run lint` y `npx tsc --noEmit` terminan sin errores.
-- [ ] `/juegos/rocas/jugar` muestra un canvas con la nave en el centro, 4 asteroides grandes fuera de un radio de 130 px del centro, y vectores blancos sobre fondo negro, dentro del marco `.crt` con relación 4:3.
-- [ ] La nave rota con ← →, empuja con ↑ y dispara con Espacio (cooldown de 0,2 s); la página no hace scroll con las flechas ni con Espacio mientras se juega.
-- [ ] Destruir un asteroide de tamaño 3, 2 o 1 suma respectivamente 20, 50 o 100 puntos, y el valor aparece en el HUD de React; los grandes se parten en dos medianos y los medianos en dos pequeños.
-- [ ] El HUD muestra tantos `♥` como vidas restantes: baja de 3 a 2 a 1 tras cada choque, y la nave reaparece tras 2 s con 3 s de invencibilidad parpadeante.
-- [ ] Al destruir todos los asteroides el nivel sube en el HUD y aparecen `3 + nivel` asteroides nuevos.
-- [ ] Al recoger el power-up (círculo cian con "3") aparece `TRIPLE Ns` en el HUD, la nave dispara tres balas en abanico de ±0,26 rad y el indicador desaparece al llegar a 0.
-- [ ] Al perder la última vida se abre el modal "FIN DEL JUEGO" con la puntuación final correcta, tras ~1,2 s; no aparece el overlay "GAME OVER" dentro del canvas.
-- [ ] En el modal, el campo de iniciales acepta espacios y letras sin que la nave dispare ni la página haga scroll; "GUARDAR PUNTUACIÓN" escribe la entrada en `av_scores` con `game: "rocas"` y la puntuación del HUD.
-- [ ] "JUGAR DE NUEVO" arranca una partida nueva con puntaje 0, 3 vidas y nivel 1; "VOLVER AL VAULT" y "SALIR" navegan sin errores en consola.
-- [ ] PAUSA congela la nave, los asteroides y las partículas, muestra el overlay "EN PAUSA" y REANUDAR continúa sin salto brusco; FIN abre el modal con el puntaje actual y detiene la simulación.
-- [ ] Al salir de la ruta no quedan listeners de teclado ni un `requestAnimationFrame` activos (las flechas y Espacio recuperan su comportamiento normal en otras pantallas).
-- [ ] `/juegos/caida/jugar` (y los demás juegos sin entrada en el registro) siguen mostrando la arena y la simulación actuales.
-- [ ] El `long` de `rocas` ya no menciona OVNIs; `/biblioteca`, `/` y `/salon` se ven igual que antes.
-- [ ] No hay errores en consola ni advertencias de hidratación en `/juegos/rocas/jugar`.
+- [x] `npm run build`, `npm run lint` y `npx tsc --noEmit` terminan sin errores.
+- [x] `/juegos/rocas/jugar` muestra un canvas con la nave en el centro, 4 asteroides grandes fuera de un radio de 130 px del centro, y vectores blancos sobre fondo negro, dentro del marco `.crt` con relación 4:3.
+- [x] La nave rota con ← →, empuja con ↑ y dispara con Espacio (cooldown de 0,2 s); la página no hace scroll con las flechas ni con Espacio mientras se juega.
+- [x] Destruir un asteroide de tamaño 3, 2 o 1 suma respectivamente 20, 50 o 100 puntos, y el valor aparece en el HUD de React; los grandes se parten en dos medianos y los medianos en dos pequeños.
+- [x] El HUD muestra tantos `♥` como vidas restantes: baja de 3 a 2 a 1 tras cada choque, y la nave reaparece tras 2 s con 3 s de invencibilidad parpadeante.
+- [x] Al destruir todos los asteroides el nivel sube en el HUD y aparecen `3 + nivel` asteroides nuevos.
+- [x] Al recoger el power-up (círculo cian con "3") aparece `TRIPLE Ns` en el HUD, la nave dispara tres balas en abanico de ±0,26 rad y el indicador desaparece al llegar a 0.
+- [x] Al perder la última vida se abre el modal "FIN DEL JUEGO" con la puntuación final correcta, tras ~1,2 s; no aparece el overlay "GAME OVER" dentro del canvas.
+- [x] En el modal, el campo de iniciales acepta espacios y letras sin que la nave dispare ni la página haga scroll; "GUARDAR PUNTUACIÓN" escribe la entrada en `av_scores` con `game: "rocas"` y la puntuación del HUD.
+- [x] "JUGAR DE NUEVO" arranca una partida nueva con puntaje 0, 3 vidas y nivel 1; "VOLVER AL VAULT" y "SALIR" navegan sin errores en consola.
+- [x] PAUSA congela la nave, los asteroides y las partículas, muestra el overlay "EN PAUSA" y REANUDAR continúa sin salto brusco; FIN abre el modal con el puntaje actual y detiene la simulación.
+- [x] Al salir de la ruta no quedan listeners de teclado ni un `requestAnimationFrame` activos (las flechas y Espacio recuperan su comportamiento normal en otras pantallas).
+- [x] `/juegos/caida/jugar` (y los demás juegos sin entrada en el registro) siguen mostrando la arena y la simulación actuales.
+- [x] El `long` de `rocas` ya no menciona OVNIs; `/biblioteca`, `/` y `/salon` se ven igual que antes.
+- [x] No hay errores en consola ni advertencias de hidratación en `/juegos/rocas/jugar`.
 
 ---
 
