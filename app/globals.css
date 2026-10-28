@@ -684,6 +684,8 @@ a { color: inherit; text-decoration: none; }
   background: var(--green); box-shadow: 0 0 6px var(--green);
 }
 
+.game-canvas { display: block; width: 100%; height: 100%; }
+
 /* fake in-screen game */
 .game-arena {
   position: absolute; inset: 0;

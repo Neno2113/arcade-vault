@@ -1,0 +1,122 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - link "ARCADE VAULT" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e7]:
+        - link "Inicio" [ref=f3e8] [cursor=pointer]:
+          - /url: /
+        - link "Biblioteca" [ref=f3e9] [cursor=pointer]:
+          - /url: /biblioteca
+        - link "Salón de la Fama" [ref=f3e10] [cursor=pointer]:
+          - /url: /salon
+        - link "Acerca de" [ref=f3e11] [cursor=pointer]:
+          - /url: /acerca
+      - generic [ref=f3e12]: CRÉDITOS · 03
+      - link "Iniciar Sesión" [ref=f3e15] [cursor=pointer]:
+        - /url: /auth
+    - complementary [ref=f3e16]:
+      - generic [ref=f3e17]: MENÚ
+      - link "Inicio" [ref=f3e18] [cursor=pointer]:
+        - /url: /
+      - link "Biblioteca" [ref=f3e19] [cursor=pointer]:
+        - /url: /biblioteca
+      - link "Salón de la Fama" [ref=f3e20] [cursor=pointer]:
+        - /url: /salon
+      - link "Acerca de" [ref=f3e21] [cursor=pointer]:
+        - /url: /acerca
+      - link "Iniciar Sesión" [ref=f3e22] [cursor=pointer]:
+        - /url: /auth
+      - generic [ref=f3e24]: CRÉDITOS · 03
+    - main [ref=f3e25]:
+      - generic [ref=f3e88]:
+        - generic [ref=f3e89]:
+          - generic [ref=f3e90]: ▲
+          - generic [ref=f3e92]:
+            - generic [ref=f3e93]:
+              - generic [ref=f3e94]: SHOOTER
+              - generic [ref=f3e95]: 1 JUGADOR
+              - generic [ref=f3e96]: TECLADO / TÁCTIL
+              - generic [ref=f3e97]: RETRO 1985
+            - heading "ROCAS" [level=2] [ref=f3e98]
+            - paragraph [ref=f3e99]: Tu nave triangular flota en vacío absoluto. Dispara y rota para dividir rocas en fragmentos cada vez más pequeños. Recoge el disparo triple y limpia cada nivel antes de que las rocas te alcancen.
+            - generic [ref=f3e100]:
+              - generic [ref=f3e101]:
+                - generic [ref=f3e102]: Partidas
+                - generic [ref=f3e103]: 15.6K
+              - generic [ref=f3e104]:
+                - generic [ref=f3e105]: Mejor global
+                - generic [ref=f3e106]: "41.200"
+              - generic [ref=f3e107]:
+                - generic [ref=f3e108]: Dificultad
+                - generic [ref=f3e109]: ★ ★ ★ ☆ ☆
+            - generic [ref=f3e110]:
+              - link "▶ JUGAR AHORA" [ref=f3e111] [cursor=pointer]:
+                - /url: /juegos/rocas/jugar
+              - link "VOLVER AL VAULT" [ref=f3e112] [cursor=pointer]:
+                - /url: /biblioteca
+        - complementary [ref=f3e113]:
+          - generic [ref=f3e114]:
+            - heading "MEJORES PUNTUACIONES" [level=3] [ref=f3e115]
+            - generic [ref=f3e116]:
+              - generic [ref=f3e117]: "#01"
+              - generic [ref=f3e118]:
+                - text: ARKADYA
+                - generic [ref=f3e119]: 19/12/2026
+              - generic [ref=f3e120]: "278.417"
+            - generic [ref=f3e121]:
+              - generic [ref=f3e122]: "#02"
+              - generic [ref=f3e123]:
+                - text: MAGENTA88
+                - generic [ref=f3e124]: 14/11/2026
+              - generic [ref=f3e125]: "245.157"
+            - generic [ref=f3e126]:
+              - generic [ref=f3e127]: "#03"
+              - generic [ref=f3e128]:
+                - text: VECTORX
+                - generic [ref=f3e129]: 19/07/2026
+              - generic [ref=f3e130]: "179.637"
+            - generic [ref=f3e131]:
+              - generic [ref=f3e132]: "#04"
+              - generic [ref=f3e133]:
+                - text: NEONFOX
+                - generic [ref=f3e134]: 01/08/2026
+              - generic [ref=f3e135]: "177.844"
+            - generic [ref=f3e136]:
+              - generic [ref=f3e137]: "#05"
+              - generic [ref=f3e138]:
+                - text: DROID_X
+                - generic [ref=f3e139]: 19/02/2026
+              - generic [ref=f3e140]: "117.367"
+            - generic [ref=f3e141]:
+              - generic [ref=f3e142]: "#06"
+              - generic [ref=f3e143]:
+                - text: PIXEL_DAD
+                - generic [ref=f3e144]: 21/03/2026
+              - generic [ref=f3e145]: "95.046"
+            - generic [ref=f3e146]:
+              - generic [ref=f3e147]: "#07"
+              - generic [ref=f3e148]:
+                - text: BIT_LORD
+                - generic [ref=f3e149]: 01/03/2026
+              - generic [ref=f3e150]: "52.806"
+            - generic [ref=f3e151]:
+              - generic [ref=f3e152]: "#08"
+              - generic [ref=f3e153]:
+                - text: SCANLINE
+                - generic [ref=f3e154]: 14/03/2026
+              - generic [ref=f3e155]: "41.242"
+            - generic [ref=f3e156]:
+              - generic [ref=f3e157]: "#09"
+              - generic [ref=f3e158]:
+                - text: RGB_QUEEN
+                - generic [ref=f3e159]: 28/07/2026
+              - generic [ref=f3e160]: "39.706"
+            - generic [ref=f3e161]:
+              - generic [ref=f3e162]: "#10"
+              - generic [ref=f3e163]:
+                - text: M00NRYU
+                - generic [ref=f3e164]: 10/04/2026
+              - generic [ref=f3e165]: "21.307"
+    - contentinfo [ref=f3e52]: © 2026 ARCADE VAULT · HECHO CON PIXELES Y NEÓN · v2.6.0
+  - alert [ref=f3e53]
