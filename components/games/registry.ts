@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import { AsteroidsGame } from './asteroids-game';
 import { BloqueBusterGame } from './bloque-buster-game';
 import { CaidaGame } from './caida-game';
+import { SerpentinaGame } from './serpentina-game';
 import type { GameProps } from './types';
 export type GameEntry = {
   Component: ComponentType<GameProps>;
@@ -24,5 +25,10 @@ export const GAME_REGISTRY: Record<string, GameEntry> = {
     Component: BloqueBusterGame,
     controls: '← → A D MOVER · ESPACIO LANZAR · P PAUSA',
     initialLives: 3,
+  },
+  serpentina: {
+    Component: SerpentinaGame,
+    controls: '← ↑ ↓ → WASD MOVER · P PAUSA',
+    initialLives: null,
   },
 };
