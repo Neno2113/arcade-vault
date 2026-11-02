@@ -1,0 +1,71 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - link "ARCADE VAULT" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e7]:
+        - link "Inicio" [ref=f3e8] [cursor=pointer]:
+          - /url: /
+        - link "Biblioteca" [ref=f3e9] [cursor=pointer]:
+          - /url: /biblioteca
+        - link "Salón de la Fama" [ref=f3e10] [cursor=pointer]:
+          - /url: /salon
+        - link "Acerca de" [ref=f3e11] [cursor=pointer]:
+          - /url: /acerca
+      - generic [ref=f3e12]: CRÉDITOS · 03
+      - link "Iniciar Sesión" [ref=f3e15] [cursor=pointer]:
+        - /url: /auth
+    - complementary [ref=f3e16]:
+      - generic [ref=f3e17]: MENÚ
+      - link "Inicio" [ref=f3e18] [cursor=pointer]:
+        - /url: /
+      - link "Biblioteca" [ref=f3e19] [cursor=pointer]:
+        - /url: /biblioteca
+      - link "Salón de la Fama" [ref=f3e20] [cursor=pointer]:
+        - /url: /salon
+      - link "Acerca de" [ref=f3e21] [cursor=pointer]:
+        - /url: /acerca
+      - link "Iniciar Sesión" [ref=f3e22] [cursor=pointer]:
+        - /url: /auth
+      - generic [ref=f3e24]: CRÉDITOS · 03
+    - main [ref=f3e25]:
+      - generic [ref=f3e26]:
+        - generic [ref=f3e27]:
+          - generic [ref=f3e28]:
+            - generic [ref=f3e29]:
+              - generic [ref=f3e30]: Jugador
+              - generic [ref=f3e31]: INVITADO
+            - generic [ref=f3e32]:
+              - generic [ref=f3e33]: Puntuación
+              - generic [ref=f3e34]: "239"
+            - generic [ref=f3e35]:
+              - generic [ref=f3e36]: Nivel
+              - generic [ref=f3e37]: "01"
+            - generic [ref=f3e60]:
+              - generic [ref=f3e61]: Líneas
+              - generic [ref=f3e62]: "0"
+          - generic [ref=f3e38]:
+            - button "PAUSA" [ref=f3e39] [cursor=pointer]
+            - button "FIN" [ref=f3e40] [cursor=pointer]
+            - link "SALIR" [ref=f3e41] [cursor=pointer]:
+              - /url: /juegos/caida
+        - generic [ref=f3e45]:
+          - generic [ref=f3e46]: SEÑAL OK
+          - generic [ref=f3e47]: CAÍDA · CRT-83 · 60 HZ
+          - generic [ref=f3e48]: ← → MOVER · ↓ BAJAR · ↑ X ROTAR · ESPACIO CAÍDA · P PAUSA
+        - generic [ref=f3e64]:
+          - heading "FIN DEL JUEGO" [level=2] [ref=f3e65]
+          - generic [ref=f3e66]: PUNTUACIÓN FINAL
+          - generic [ref=f3e67]: "239"
+          - generic [ref=f3e68]:
+            - textbox "Tus iniciales" [ref=f3e69]:
+              - /placeholder: TUS INICIALES
+              - text: INVITADO
+            - button "GUARDAR PUNTUACIÓN" [ref=f3e70] [cursor=pointer]
+          - generic [ref=f3e71]:
+            - button "JUGAR DE NUEVO" [ref=f3e72] [cursor=pointer]
+            - link "VOLVER AL VAULT" [ref=f3e73] [cursor=pointer]:
+              - /url: /biblioteca
+    - contentinfo [ref=f3e49]: © 2026 ARCADE VAULT · HECHO CON PIXELES Y NEÓN · v2.6.0
+  - button "Open Next.js Dev Tools" [ref=f3e55] [cursor=pointer]
+  - alert [ref=f3e59]

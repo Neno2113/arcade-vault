@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import Link from 'next/link';
 import type { Game } from '@/lib/types';
 import { GAME_REGISTRY } from './games/registry';
-import type { GameStats } from './games/types';
+import type { GameStat, GameStats } from './games/types';
 import { saveScore } from '@/app/juegos/[id]/jugar/actions';
 import { useSession } from './session-provider';
 const LEVEL_STEP = 2500;
@@ -18,11 +18,12 @@ export function GamePlayer({ game }: { game: Game }) {
   const [saved, setSaved] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saving, startSaving] = useTransition();
-  const [lives, setLives] = useState(LIVES);
-  const [tripleLeft, setTripleLeft] = useState(0);
+  const entry = GAME_REGISTRY[game.id];
+  const initialLives = entry ? entry.initialLives : LIVES;
+  const [lives, setLives] = useState<number | null>(initialLives);
+  const [extras, setExtras] = useState<GameStat[]>([]);
   const [runId, setRunId] = useState(0);
   const scoreRef = useRef(0);
-  const entry = GAME_REGISTRY[game.id];
   const name = typedName ?? user?.name ?? 'INVITADO';
   useEffect(() => {
     if (entry || over || paused) return;
@@ -41,8 +42,8 @@ export function GamePlayer({ game }: { game: Game }) {
     scoreRef.current = 0;
     setScore(0);
     setLevel(1);
-    setLives(LIVES);
-    setTripleLeft(0);
+    setLives(initialLives);
+    setExtras([]);
     setRunId((id) => id + 1);
     setPaused(false);
     setOver(false);
@@ -53,7 +54,10 @@ export function GamePlayer({ game }: { game: Game }) {
     setScore(stats.score);
     setLives(stats.lives);
     setLevel(stats.level);
-    setTripleLeft(stats.tripleLeft);
+    setExtras(stats.extras ?? []);
+  };
+  const handleTogglePause = () => {
+    if (!over) setPaused((p) => !p);
   };
   const handleGameOver = (finalScore: number) => {
     setScore(finalScore);
@@ -85,20 +89,23 @@ export function GamePlayer({ game }: { game: Game }) {
             <div className="l">Puntuación</div>
             <div className="v">{score.toLocaleString('es-ES')}</div>
           </div>
-          <div className="hud-stat lives">
-            <div className="l">Vidas</div>
-            <div className="v">{'♥ '.repeat(entry ? lives : LIVES).trim()}</div>
-          </div>
+          {lives !== null && (
+            <div className="hud-stat lives">
+              <div className="l">Vidas</div>
+              <div className="v">{'♥ '.repeat(lives).trim()}</div>
+            </div>
+          )}
           <div className="hud-stat level">
             <div className="l">Nivel</div>
             <div className="v">{String(level).padStart(2, '0')}</div>
           </div>
-          {entry && tripleLeft > 0 && (
-            <div className="hud-stat">
-              <div className="l">Triple</div>
-              <div className="v">{tripleLeft}s</div>
-            </div>
-          )}
+          {entry &&
+            extras.map((s) => (
+              <div className="hud-stat" key={s.label}>
+                <div className="l">{s.label}</div>
+                <div className="v">{s.value}</div>
+              </div>
+            ))}
         </div>
         <div className="hud-actions">
           <button className="btn yellow" onClick={() => setPaused((p) => !p)}>
@@ -120,6 +127,7 @@ export function GamePlayer({ game }: { game: Game }) {
               runId={runId}
               onStats={handleStats}
               onGameOver={handleGameOver}
+              onTogglePause={handleTogglePause}
             />
           ) : (
             <div className="game-arena">
@@ -176,11 +184,7 @@ export function GamePlayer({ game }: { game: Game }) {
                   placeholder="TUS INICIALES"
                   aria-label="Tus iniciales"
                 />
-                <button
-                  className="btn yellow"
-                  onClick={save}
-                  disabled={saving}
-                >
+                <button className="btn yellow" onClick={save} disabled={saving}>
                   {saving ? 'GUARDANDO…' : 'GUARDAR PUNTUACIÓN'}
                 </button>
               </div>
