@@ -1,9 +1,17 @@
+export type GameStat = { label: string; value: string };
 export type GameStats = {
   score: number;
-  lives: number;
+  /** null = el juego no tiene vidas. */
+  lives: number | null;
   level: number;
-  /** Segundos restantes de disparo triple; 0 si no está activo. */
-  tripleLeft: number;
+  /** Stats propios del juego; el HUD los pinta de forma genérica. */
+  extras?: GameStat[];
+};
+export type EngineCallbacks = {
+  onStats: (stats: GameStats) => void;
+  onGameOver: (score: number) => void;
+  /** El jugador pidió pausar o reanudar con el teclado; la decisión es de la plataforma. */
+  onTogglePause?: () => void;
 };
 export type GameProps = {
   /** Congela la simulación y el dibujo (se conserva el último frame). */
@@ -14,4 +22,6 @@ export type GameProps = {
   onStats: (stats: GameStats) => void;
   /** Se invoca una sola vez por partida, al agotarse las vidas. */
   onGameOver: (score: number) => void;
+  /** Pide a la plataforma pausar o reanudar; la pausa sigue siendo de GamePlayer. */
+  onTogglePause?: () => void;
 };

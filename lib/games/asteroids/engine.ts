@@ -1,8 +1,4 @@
-import type { GameStats } from '@/components/games/types';
-export type EngineCallbacks = {
-  onStats: (stats: GameStats) => void;
-  onGameOver: (score: number) => void;
-};
+import type { EngineCallbacks, GameStats } from '@/components/games/types';
 const W = 800;
 const H = 600;
 const RADII = [0, 16, 30, 50]; // por tamaño 1, 2, 3
@@ -495,12 +491,14 @@ export class AsteroidsEngine {
   }
   // ── Stats ───────────────────────────────────────────────────────────────────
   private emitStats() {
+    const tripleLeft =
+      this.ship.tripleShot > 0 ? Math.ceil(this.ship.tripleShot) : 0;
     const stats: GameStats = {
       score: this.score,
       lives: this.lives,
       level: this.level,
-      tripleLeft:
-        this.ship.tripleShot > 0 ? Math.ceil(this.ship.tripleShot) : 0,
+      extras:
+        tripleLeft > 0 ? [{ label: 'Triple', value: `${tripleLeft}s` }] : [],
     };
     const last = this.lastStats;
     if (
@@ -508,7 +506,7 @@ export class AsteroidsEngine {
       last.score === stats.score &&
       last.lives === stats.lives &&
       last.level === stats.level &&
-      last.tripleLeft === stats.tripleLeft
+      last.extras?.[0]?.value === stats.extras?.[0]?.value
     )
       return;
     this.lastStats = stats;
