@@ -1,0 +1,65 @@
+- generic [active] [ref=f14e1]:
+  - generic [ref=f14e2]:
+    - navigation [ref=f14e3]:
+      - link "ARCADE VAULT" [ref=f14e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f14e7]:
+        - link "Inicio" [ref=f14e8] [cursor=pointer]:
+          - /url: /
+        - link "Biblioteca" [ref=f14e9] [cursor=pointer]:
+          - /url: /biblioteca
+        - link "Salón de la Fama" [ref=f14e10] [cursor=pointer]:
+          - /url: /salon
+        - link "Acerca de" [ref=f14e11] [cursor=pointer]:
+          - /url: /acerca
+      - generic [ref=f14e12]: CRÉDITOS · 03
+      - link "Iniciar Sesión" [ref=f14e15] [cursor=pointer]:
+        - /url: /auth
+    - complementary [ref=f14e16]:
+      - generic [ref=f14e17]: MENÚ
+      - link "Inicio" [ref=f14e18] [cursor=pointer]:
+        - /url: /
+      - link "Biblioteca" [ref=f14e19] [cursor=pointer]:
+        - /url: /biblioteca
+      - link "Salón de la Fama" [ref=f14e20] [cursor=pointer]:
+        - /url: /salon
+      - link "Acerca de" [ref=f14e21] [cursor=pointer]:
+        - /url: /acerca
+      - link "Iniciar Sesión" [ref=f14e22] [cursor=pointer]:
+        - /url: /auth
+      - generic [ref=f14e24]: CRÉDITOS · 03
+    - main [ref=f14e25]:
+      - generic [ref=f14e26]:
+        - generic [ref=f14e27]:
+          - heading "SALÓN DE LA FAMA" [level=1] [ref=f14e28]
+          - paragraph [ref=f14e29]: LOS NOMBRES QUE NUNCA SE BORRAN DE LA PANTALLA
+        - generic [ref=f14e30]:
+          - button "BLOQUE BUSTER" [ref=f14e31] [cursor=pointer]
+          - button "CAÍDA" [ref=f14e32] [cursor=pointer]
+          - button "SERPENTINA" [ref=f14e33] [cursor=pointer]
+          - button "GLOTÓN" [ref=f14e34] [cursor=pointer]
+          - button "INVASORES" [ref=f14e35] [cursor=pointer]
+          - button "ROCAS" [ref=f14e36] [cursor=pointer]
+          - button "RANARIA" [ref=f14e37] [cursor=pointer]
+          - button "DUELO PIXEL" [ref=f14e38] [cursor=pointer]
+        - generic [ref=f14e40]:
+          - generic [ref=f14e41]: CAMPEÓN
+          - generic [ref=f14e42]: "01"
+          - generic [ref=f14e43]: P A D
+          - generic [ref=f14e44]: "80"
+          - generic [ref=f14e45]: 02/11/2026
+        - generic [ref=f14e46]:
+          - generic [ref=f14e47]:
+            - generic [ref=f14e48]: RANGO
+            - generic [ref=f14e49]: JUGADOR
+            - generic [ref=f14e50]: PUNTUACIÓN
+            - generic [ref=f14e51]: FECHA
+          - generic [ref=f14e52]:
+            - generic [ref=f14e53]: "#01"
+            - generic [ref=f14e54]: P A D
+            - generic [ref=f14e55]: "80"
+            - generic [ref=f14e56]: 02/11/2026
+        - link "VOLVER A LA BIBLIOTECA" [ref=f14e58] [cursor=pointer]:
+          - /url: /biblioteca
+    - contentinfo [ref=f14e59]: © 2026 ARCADE VAULT · HECHO CON PIXELES Y NEÓN · v2.6.0
+  - button "Open Next.js Dev Tools" [ref=f14e65] [cursor=pointer]
